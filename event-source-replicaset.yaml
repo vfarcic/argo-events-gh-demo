@@ -10,9 +10,8 @@ spec:
       namespace: a-team
       group: apps
       version: v1
-      resource: deployments
+      resource: replicasets
       eventTypes:
         - ADD
-        - UPDATE
       filter:
         afterStart: true

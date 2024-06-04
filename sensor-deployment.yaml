@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
-  name: deployment
+  name: app
 spec:
   template:
     serviceAccountName: argo-events
   dependencies:
-    - name: deployment
-      eventSourceName: deployment
-      eventName: deployment
+    - name: app
+      eventSourceName: app
+      eventName: app
   triggers:
     - template:
         name: github-actions
@@ -17,11 +17,11 @@ spec:
           method: POST
           payload:
             - src:
-                dependencyName: deployment
+                dependencyName: app
                 dataKey: body.metadata.labels.actions\.github\.com\/name
               dest: event_type
             - src:
-                dependencyName: deployment
+                dependencyName: app
                 dataKey: body
               dest: client_payload.resource
           headers:
