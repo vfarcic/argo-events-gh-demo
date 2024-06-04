@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: deployment
+spec:
+  template:
+    serviceAccountName: argo-events
+  resource:
+    deployment:
+      namespace: a-team
+      group: apps
+      version: v1
+      resource: deployments
+      eventTypes:
+        - ADD
+      filter:
+        afterStart: true

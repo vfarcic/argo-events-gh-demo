@@ -1,0 +1,16 @@
+name: functional-tests
+run-name: functional-tests
+on:
+  repository_dispatch:
+    types:
+      - functional-tests
+jobs:
+  run-functional-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Functional tests
+        run: |
+          echo "The following resource was created or updated:"
+          echo 
+          echo '${{ github.event.client_payload.resource }}' | jq .
+          echo "Running functional tests..."

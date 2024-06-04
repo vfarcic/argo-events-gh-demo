@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: deployment
+spec:
+  template:
+    serviceAccountName: argo-events
+  dependencies:
+    - name: deployment
+      eventSourceName: deployment
+      eventName: deployment
+  triggers:
+    - template:
+        name: github-actions
+        http:
+          url: https://api.github.com/repos/vfarcic/argo-events-gh-demo/dispatches
+          method: POST
+          payload:
+            - src:
+                dependencyName: deployment
+                dataKey: body.metadata.labels.actions\.github\.com\/name
+              dest: event_type
+            - src:
+                dependencyName: deployment
+                dataKey: body
+              dest: client_payload.resource
+          headers:
+            Accept: "application/vnd.github.everest-preview+json"
+          secureHeaders:
+            - name: Authorization
+              valueFrom:
+                secretKeyRef:
+                  name: github
+                  key: token
+      retryStrategy:
+        steps: 3
+      policy:
+        status:
+          allow:
+            - 200
+            - 201
+            - 204
