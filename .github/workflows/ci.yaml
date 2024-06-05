@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ttl.sh/silly-demo:$TAG
+          tags: ttl.sh/silly-demo:${{ env.TAG }}
       # - name: Commit changes
       #   run: |
       #     git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
