@@ -19,7 +19,7 @@ spec:
     spec:
       shareProcessNamespace: true
       containers:
-        - image: ttl.sh/silly-demo-vfarcic:20
+        - image: ttl.sh/silly-demo-vfarcic:21
           livenessProbe:
             httpGet:
               path: /
