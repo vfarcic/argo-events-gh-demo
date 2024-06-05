@@ -49,54 +49,6 @@
         }
       }
     },
-    "crossplane-cli@1.16.0": {
-      "last_modified": "2024-06-03T07:19:07Z",
-      "resolved": "github:NixOS/nixpkgs/4a4ecb0ab415c9fccfb005567a215e6a9564cdf5#crossplane-cli",
-      "source": "devbox-search",
-      "version": "1.16.0",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/cls3yp223j03iknwjswqja677h4r6c4z-crossplane-cli-1.16.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/cls3yp223j03iknwjswqja677h4r6c4z-crossplane-cli-1.16.0"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/9sbsv6949xmajdnxjm9l8b74igxb62rw-crossplane-cli-1.16.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/9sbsv6949xmajdnxjm9l8b74igxb62rw-crossplane-cli-1.16.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/9qs97cxcyv7lmgvcs1zcv69bsjlh901z-crossplane-cli-1.16.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/9qs97cxcyv7lmgvcs1zcv69bsjlh901z-crossplane-cli-1.16.0"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/a7ps9d62vz4dxsbfhlg6clk5vnf8x3gr-crossplane-cli-1.16.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/a7ps9d62vz4dxsbfhlg6clk5vnf8x3gr-crossplane-cli-1.16.0"
-        }
-      }
-    },
     "gh@2.50.0": {
       "last_modified": "2024-05-30T12:09:21Z",
       "resolved": "github:NixOS/nixpkgs/aa61b27554a5fc282758bf0324781e3464ef2cde#gh",
@@ -142,54 +94,6 @@
             }
           ],
           "store_path": "/nix/store/flq1szdy6pvm50f348ik03x8058kf0b6-gh-2.50.0"
-        }
-      }
-    },
-    "google-cloud-sdk@452.0.1": {
-      "last_modified": "2024-03-08T13:51:52Z",
-      "resolved": "github:NixOS/nixpkgs/a343533bccc62400e8a9560423486a3b6c11a23b#google-cloud-sdk",
-      "source": "devbox-search",
-      "version": "452.0.1",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/s7mhjkvkshh3kqr206jabkq0zk8gb690-google-cloud-sdk-452.0.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/s7mhjkvkshh3kqr206jabkq0zk8gb690-google-cloud-sdk-452.0.1"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/lwdk1y7qzfr7lj0bx503akhpvqspmdi5-google-cloud-sdk-452.0.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/lwdk1y7qzfr7lj0bx503akhpvqspmdi5-google-cloud-sdk-452.0.1"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/3g57plb5qki29cd75akrw1766vx42x45-google-cloud-sdk-452.0.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/3g57plb5qki29cd75akrw1766vx42x45-google-cloud-sdk-452.0.1"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/98f3i5dfik82aslnzwx7blk04qa6mwdx-google-cloud-sdk-452.0.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/98f3i5dfik82aslnzwx7blk04qa6mwdx-google-cloud-sdk-452.0.1"
         }
       }
     },
