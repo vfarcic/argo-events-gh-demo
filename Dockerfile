@@ -1,14 +1,17 @@
-FROM --platform=$BUILDPLATFORM golang:1.22.2-alpine AS build
-ADD . /src
+FROM golang:1.22.2-alpine AS build
+RUN mkdir /src
 WORKDIR /src
-ARG TARGETOS TARGETARCH
-RUN go get -d -v -t
-RUN GOOS=$TARGETOS GOARCH=$TARGETARCH go build -v -o silly-demo 
+ADD ./go.mod .
+ADD ./go.sum .
+ADD ./vendor .
+ADD ./*.go .
+RUN GOOS=linux GOARCH=amd64 go build -o silly-demo
+RUN chmod +x silly-demo
 
-FROM alpine:3.16.3
-RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
-EXPOSE 8080
-ENV DEBUG=true
-CMD ["silly-demo"]
+FROM scratch
+ARG VERSION
+ENV VERSION=$VERSION
+ENV DB_PORT=5432 DB_USERNAME=postgres DB_NAME=silly-demo
 COPY --from=build /src/silly-demo /usr/local/bin/silly-demo
-RUN chmod +x /usr/local/bin/silly-demo
+EXPOSE 8080
+CMD ["silly-demo"]
