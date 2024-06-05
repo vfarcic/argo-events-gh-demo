@@ -31,7 +31,7 @@ jobs:
       - name: Run unit tests
         run: |
           yq --inplace \
-              ".spec.template.spec.containers[0].image = \"${{ env.IMAGE }}"" \
+              ".spec.template.spec.containers[0].image = \"${{ env.IMAGE }}\"" \
               silly-demo/deployment.yaml
       - name: Commit changes
         run: |
