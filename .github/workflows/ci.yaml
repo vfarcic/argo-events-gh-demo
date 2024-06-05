@@ -8,6 +8,7 @@ jobs:
   build-container-image:
     runs-on: ubuntu-latest
     env:
+      IMAGE: ttl.sh/silly-demo-${{github.triggering_actor}}-${{github.run_number}}
       FORCE_COLOR: 1
     steps:
       - uses: earthly/actions-setup@v1
@@ -22,20 +23,24 @@ jobs:
       - name: Run unit tests
         run: |
           echo "Running unit tests..."
-          env
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ttl.sh/silly-demo-${{github.triggering_actor}}-${{github.run_number}}
-      # - name: Commit changes
-      #   run: |
-      #     git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      #     git config --local user.name "github-actions[bot]"
-      #     git add .
-      #     git commit -m "Release ${{ env.TAG }} [skip ci]"
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: ${{ github.ref }}
+          tags: ${{ env.IMAGE }}
+      - name: Run unit tests
+        run: |
+          yq --inplace \
+              ".spec.template.spec.containers[0].image = \"${{ env.IMAGE }}"" \
+              silly-demo/deployment.yaml
+      - name: Commit changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Release ${{ env.TAG }} [skip ci]"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
