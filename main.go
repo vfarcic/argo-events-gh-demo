@@ -24,5 +24,5 @@ func main() {
 
 func rootHandler(ctx *gin.Context) {
 	slog.Debug("Handling request", "URI", ctx.Request.RequestURI)
-	ctx.String(http.StatusOK, "This is a silly demo!!!")
+	ctx.String(http.StatusOK, "This is a silly demo")
 }
