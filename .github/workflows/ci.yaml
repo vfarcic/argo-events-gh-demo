@@ -8,7 +8,7 @@ jobs:
   build-container-image:
     runs-on: ubuntu-latest
     env:
-      IMAGE: ttl.sh/silly-demo-${{github.triggering_actor}}-${{github.run_number}}
+      IMAGE: ttl.sh/silly-demo-${{github.triggering_actor}}:${{github.run_number}}
       FORCE_COLOR: 1
     steps:
       - uses: earthly/actions-setup@v1
